@@ -6,6 +6,7 @@
 
 ## To-Do
 
+- Instead of having things in the main should create an app that calls the scraper, parser, etc
 - Add the ability to search by year on the webpage(This could already be parsed out)
 - Add the ability to send an email if a car is found within a certain criteria
 
