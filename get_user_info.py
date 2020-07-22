@@ -1,4 +1,4 @@
-def get_car_info(s):
+def get_mandm_info(s):
     # Get the car make from the user
     INFO = input("Enter the {}:".format(s))
     # Small user input validation for now
@@ -20,10 +20,10 @@ def get_zip_code():
         return ZIP_CODE
 
 
-def get_info():
+def get_car_info():
 
-    CAR_MAKE = get_car_info("Make")
-    CAR_MODEL = get_car_info("Model")
+    CAR_MAKE = get_mandm_info("Make")
+    CAR_MODEL = get_mandm_info("Model")
     ZIP_CODE = get_zip_code()
     print("MAKE: {}, MODEL: {}, ZIP CODE: {}".format(
         CAR_MAKE, CAR_MODEL, ZIP_CODE))

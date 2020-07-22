@@ -2,8 +2,7 @@
 
 ## Working On
 
-- Figuring out how the notification system will work
-- Finding identifying factors for unique keys for the database
+- Getting user parameters for how much they are willing to pay, range for year, mileage, etc
 
 ## To-Do
 
