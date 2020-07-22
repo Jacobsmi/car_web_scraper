@@ -7,7 +7,7 @@ def get_car_info(s):
         print("Please enter a valid {}".format(s))
         get_car_info(s)
     else:
-        return INFO
+        return INFO.capitalize()
 
 
 def get_zip_code():

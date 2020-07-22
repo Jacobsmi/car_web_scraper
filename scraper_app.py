@@ -1,8 +1,30 @@
 import config
+import database_controller as db
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+
+def parse_info(titles, prices, miles):
+    cars = []
+    for x in range(len(titles)-1):
+        '''
+        title_parts[0] = Year
+        title_parts[1] = Make
+        title_parts[2] = Model
+        
+        Other parts represent options and can be handled together
+        '''
+        mile = int(miles[x].text.replace(",","").replace(" mi",""))
+        price = int(prices[x].text.replace("$", "").replace(",",""))
+        title_parts = titles[x].text.split(" ")
+        options = ""
+        for y in range(3,len(title_parts)):
+            if y != len(title_parts):
+                options += title_parts[y] + " "
+            else:
+                options += title_parts[y]
+    
 def get_car_page(CAR_MAKE, CAR_MODEL, ZIP_CODE):
     # Create an instance of the driver with the argument pointing to chromedriver on system
     driver = webdriver.Chrome(config.PATH_TO_WEB_DRIVER)
@@ -39,16 +61,20 @@ def get_car_page(CAR_MAKE, CAR_MODEL, ZIP_CODE):
     # This try except loop attempts to get all the raw information for the cars by
     # pulling text, found by class, right off the page 
     sleep(2)
-    try:
-        print("Trying to get information")
-        titles = driver.find_elements_by_class_name("_4BPaqe")
-        prices = driver.find_elements_by_class_name("_4SFkcZ")
-        miles = driver.find_elements_by_class_name("qUF2aQ")
-        for x in range(0,len(titles)-1):
-            print("TITLE: {} PRICE:{} MILES:{}".format(titles[x].text, prices[x].text, miles[x].text))
+    print("Trying to get information")
+    titles = driver.find_elements_by_class_name("_4BPaqe")
+    prices = driver.find_elements_by_class_name("_4SFkcZ")
+    miles = driver.find_elements_by_class_name("qUF2aQ")
+    parse_info(titles, prices, miles)
+    # try:
+    #     print("Trying to get information")
+    #     titles = driver.find_elements_by_class_name("_4BPaqe")
+    #     prices = driver.find_elements_by_class_name("_4SFkcZ")
+    #     miles = driver.find_elements_by_class_name("qUF2aQ")
+    #     parse_info(titles, prices, miles)
 
-    except:
-        driver.close()
-        return "title_parsing_error"
+    # except:
+    #     driver.close()
+    #     return "title_parsing_error"
     input("Press enter when done")
     return None
