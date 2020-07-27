@@ -22,4 +22,20 @@ class App:
             self.find_matching_cars()
 
     def find_matching_cars(self):
-        print("This will find matching cars")
+        for car in self.web_scraper.CARS:
+            index = self.web_scraper.CARS.index(car)
+            try:
+                year_num = int(car[0])
+                if year_num < self.user_params.EARLIEST_YEAR or year_num > self.user_params.LATEST_YEAR:
+                    print("This car should be removed {} {} {}".format(self.user_params.EARLIEST_YEAR,self.user_params.LATEST_YEAR,car))
+                    self.web_scraper.CARS.pop(index)
+                # if year_num <= self.user_params.LATEST_YEAR and year_num >= self.user_params.EARLIEST_YEAR:
+                #     print("Within the years {} {} {}".format(self.user_params.LATEST_YEAR,self.user_params.LATEST_YEAR,car))
+                # elif self.user_params.EARLIEST_YEAR == -1 and self.user_params.LATEST_YEAR == -1:
+                #     print("Within the years {} {} {}".format(self.user_params.LATEST_YEAR,self.user_params.LATEST_YEAR,car))
+
+            except:
+                print("Error converting to num")
+        print("The cars left are")
+        for car in self.web_scraper.CARS:
+            print(car)

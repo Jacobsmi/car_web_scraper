@@ -12,7 +12,7 @@ class Car_Info:
         if not INFO:
             print("Check the {} on https://cargurus.com".format(s))
             print("Please enter a valid {}".format(s))
-            get_car_info(s)
+            return self.get_mandm_info(s)
         else:
             return INFO.capitalize()
 
@@ -22,7 +22,7 @@ class Car_Info:
         # Small user input validation for now
         if not ZIP_CODE.isdigit() or len(ZIP_CODE) != 5:
             print("Please enter a valid zip code")
-            get_zip_code()
+            return self.get_zip_code()
         else:
             return ZIP_CODE
 
