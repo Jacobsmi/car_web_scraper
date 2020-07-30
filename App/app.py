@@ -27,10 +27,11 @@ class App:
         x = 1
         for car in matching_cars:
             print("CAR #{}:".format(x))
-            print("YEAR: {}".format(matching_cars[0]))
-            print("MAKE AND MODEL: {} {}".format(matching_cars[1], matching_cars[2]))
-            print("PRICE: {}".format(matching_cars[4]))
-            print("MILEAGE: {}".format(matching_cars[5]))
+            print("YEAR: {}".format(car[0]))
+            print("MAKE AND MODEL: {} {}".format(car[1], car[2]))
+            print("PRICE: {}".format(car[4]))
+            print("MILEAGE: {}".format(car[5]))
+            x+=1
 
 
     def find_matching_cars(self):
